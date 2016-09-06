@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- xmlns is een name space voor thymleaf -->
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"
+   th:href="@{/css/bootstrap.css}"/> 
+   
+ <link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+   th:href="@{/css/myStyle.css}"/> 
+   
+<meta charset="utf-8"/>
+<title>Studenten lijst</title>
+</head>
+<body>	
+	<div class="container spacer">
+	 <table class="table table-striped" >
+		<thead>
+			<tr>
+				<th>ID</th> <th>Nom</th><th>Date</th> <th>Email</th><th>photo</th>			
+			</tr>		
+		</thead>
+		<tbody>		
+			<tr th:each="s:${studenten}">
+				<td th:text="${s.id}"></td>
+				<td th:text="${s.nom}"></td>
+				<td th:text="${s.dateNaissance}"></td>
+				<td th:text="${s.email}"></td >
+				<td th:text="${s.photo}"></td >												
+			</tr>
+		</tbody>	
+	</table>
+</div>
+</body>
+</html>

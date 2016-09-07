@@ -12,6 +12,15 @@
 <title>Studenten lijst</title>
 </head>
 <body>	
+<div class="container spacer">
+	<form th:action="@{Index}" method="get">
+		<div class="form-group">
+			<label>Paswoord</label>
+			<input type="text" name="key" th:value="${key}"/>
+			<button type="submit">Zoeken</button>		
+		</div>
+	</form>
+</div>
 	<div class="container spacer">
 	 <table class="table table-striped" >
 		<thead>
@@ -20,7 +29,7 @@
 			</tr>		
 		</thead>
 		<tbody>		
-			<tr th:each="s:${studenten}">
+			<tr th:each="s:${pagestudenten.content}"><!--studenten -->
 				<td th:text="${s.id}"></td>
 				<td th:text="${s.nom}"></td>
 				<td th:text="${s.dateNaissance}"></td>
@@ -29,6 +38,13 @@
 			</tr>
 		</tbody>	
 	</table>
+</div>
+<div class="container">
+	<ul class="nav nav-pills"><!-- nav-pills is om horizontalform te krijgen -->
+		<li th:each="p:${pagesView}" th:class="${p==pageCourante}?active:''">
+			<a th:text="${p}" th:href="@{Index(page=${p},key=${key})}"></a>
+		</li>
+	</ul>
 </div>
 </body>
 </html>
